@@ -1,8 +1,8 @@
 WBlog
 =======
-[![Build Status](https://travis-ci.org/victorialice/AliceBlog.svg?branch=master)](https://travis-ci.org/victorialice/AliceBlog)
-[![Code Climate](https://codeclimate.com/github/victorialice/AliceBlog.png)](https://codeclimate.com/github/victorialice/AliceBlog)
-[![Test Coverage](https://codeclimate.com/github/victorialice/AliceBlog/coverage.png)](https://codeclimate.com/github/victorialice/AliceBlog)
+[![Build Status](https://travis-ci.org/windy/wblog.svg?branch=master)](https://travis-ci.org/windy/wblog)
+[![Code Climate](https://codeclimate.com/github/windy/wblog.png)](https://codeclimate.com/github/windy/wblog)
+[![Test Coverage](https://codeclimate.com/github/windy/wblog/coverage.png)](https://codeclimate.com/github/windy/wblog)
 
 The missing open source blog system on Ruby on Rails.
 
@@ -60,9 +60,9 @@ You can run it like a Ruby on Rails project as usual:
 
 1. Clone it
 
-  `git clone git@github.com:victorialice/AliceBlog.git`
+  `git clone git@github.com:windy/wblog.git`
 
-  `cd AliceBlog`
+  `cd wblog`
 
 2. Install dependencies & configure
 
@@ -102,7 +102,7 @@ It will be very fast.
 
 Ruby on Rails project deployment is another topic, I would NOT talk it here.
 
-You can read WBlog wiki for more information: [WBlog 的发布流程(Chinese only now)](https://github.com/victorialice/AliceBlog/wiki)
+You can read WBlog wiki for more information: [WBlog 的发布流程(Chinese only now)](https://github.com/windy/wblog/wiki)
 
 ### Stack
 
@@ -131,36 +131,36 @@ MIT.
 
 Home Page:
 
-![screenshot home](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/home.png)
+![screenshot home](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/home.png)
 
 Home Page for mobile:
 
-![screenshot home small](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/home-small.png)
+![screenshot home small](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/home-small.png)
 
 Home Page Hover Status for mobile:
 
-![screenshot home hover](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/home-small-hover.png)
+![screenshot home hover](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/home-small-hover.png)
 
 Blog Show Page:
 
-![screenshot post](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/post.png)
+![screenshot post](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/post.png)
 
 Blog Show Page Hover Status:
 
-![screenshot post hover](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/post-hover.png)
+![screenshot post hover](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/post-hover.png)
 
 Admin Login Page:
 
-![screenshot admin](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/admin-login.png)
+![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-login.png)
 
 Admin Dashboard Page:
 
-![screenshot admin](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/admin-dashboard.png)
+![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-dashboard.png)
 
 Admin New Blog Page:
 
-![screenshot admin](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/admin-post.png)
+![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-post.png)
 
 Admin Blogs Manage Page:
 
-![screenshot admin](https://github.com/victorialice/AliceBlog/raw/master/doc/AliceBlog_s_en/admin-posts.png)
+![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-posts.png)
