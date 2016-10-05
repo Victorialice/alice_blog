@@ -1,0 +1,23 @@
+<% content_for(:title) do
+ %><%= ::Temple::Utils.escape_html((t('title.timeline'))) %>
+<% end %><div class="row">
+<div class="small-12 large-9 large-centered columns">
+<ul class="archives-field">
+<% @posts.each do |post|
+ %><li>
+<%= ::Temple::Utils.escape_html((link_to post.title, blog_path(post), class: 'blog-title')) %>
+<p class="tags-field">
+<i class="fi-calendar">
+</i><span>
+<%= ::Temple::Utils.escape_html((format_date(post.created_at))) %>
+</span><i class="fi-pricetag-multiple">
+</i><span>
+<%= ::Temple::Utils.escape_html((post.labels_content)) %>
+</span><i class="fi-torsos">
+</i><span>
+<%= ::Temple::Utils.escape_html((post.visited_count)) %>
+</span><i class="fi-heart">
+</i><span>
+<%= ::Temple::Utils.escape_html((post.liked_count)) %>
+</span></p></li><% end %></ul><%= ::Temple::Utils.escape_html((paginate @posts)) %>
+</div></div>

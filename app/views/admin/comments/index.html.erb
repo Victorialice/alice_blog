@@ -1,0 +1,28 @@
+<div class="row admin-posts-field">
+<div class="small-12 columns">
+<h3 class="blog-title"><%= ::Temple::Utils.escape_html((t('admin.comments'))) %></h3>
+<h4 class="blog-title">
+<%= ::Temple::Utils.escape_html((link_to @post.title, blog_path(@post), target: '_blank')) %>
+</h4><table width="100%">
+<thead>
+<tr>
+<th><%= ::Temple::Utils.escape_html((t('admin.comments_head.name'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.comments_head.email'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.comments_head.content'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.comments_head.created_at'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.comments_head.operation'))) %></th>
+</tr></thead><tbody>
+<% @comments.each do |comment|
+ %><tr>
+<td><%= ::Temple::Utils.escape_html((comment.name)) %></td>
+<td>
+<%= ::Temple::Utils.escape_html((mail_to comment.email)) %>
+</td><td>
+<%= ::Temple::Utils.escape_html((simple_format(comment.content))) %>
+</td><td>
+<%= ::Temple::Utils.escape_html((format_time(comment.created_at))) %>
+
+</td><td>
+<%= ::Temple::Utils.escape_html((link_to t('admin.comments_head.reply'), blog_path(@post), target: '_blank', class: 'edit-post-link')) %>
+<%= ::Temple::Utils.escape_html((link_to t('admin.comments_head.destroy'), admin_post_comment_path(@post, comment), method: 'DELETE', 'data-confirm'=> '确认删除?')) %>
+</td></tr><% end %></tbody></table></div></div>

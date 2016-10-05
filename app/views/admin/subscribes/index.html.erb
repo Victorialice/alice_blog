@@ -1,0 +1,26 @@
+<div class="row admin-subscribes-field">
+<div class="small-12 columns">
+<h3 class="blog-title"><%= ::Temple::Utils.escape_html((t('admin.subscribes') )) %></h3>
+<table width="100%">
+<thead>
+<tr>
+<th><%= ::Temple::Utils.escape_html((t('admin.subscribes_head.email'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.subscribes_head.enable'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.subscribes_head.created_at'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.subscribes_head.operation'))) %></th>
+</tr></thead><tbody>
+<% @subscribes.each do |subscribe|
+ %><tr>
+<td>
+<%= ::Temple::Utils.escape_html((mail_to subscribe.email)) %>
+</td><td>
+<%= ::Temple::Utils.escape_html((subscribe.enable)) %>
+</td><td>
+<%= ::Temple::Utils.escape_html((format_time(subscribe.created_at))) %>
+</td><td>
+<% if subscribe.enable
+ %><%= ::Temple::Utils.escape_html((link_to t('admin.subscribes_head.op.disable'), disable_admin_subscribe_path(subscribe), method: 'POST', data: { confirm: 'Confirm?' })) %>
+<% else
+ %><%= ::Temple::Utils.escape_html((link_to t('admin.subscribes_head.op.enable'), enable_admin_subscribe_path(subscribe), method: 'POST', data: { confirm: 'Confirm?' })) %>
+<% end %></td></tr><% end %></tbody></table><%= paginate @subscribes %>
+</div></div>

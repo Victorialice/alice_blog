@@ -1,0 +1,6 @@
+<h2 class="blog-title"><%= ::Temple::Utils.escape_html((t('home.no_blog_here'))) %></h2>
+<p>
+No post here, please visit
+<%= ::Temple::Utils.escape_html((link_to ' Manage Post ', new_admin_post_path)) %>
+to create the first post.
+</p>

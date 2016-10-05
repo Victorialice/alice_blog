@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Admin Page for <%= ::Temple::Utils.escape_html((ENV['SITE_NAME'])) %></title>
+<%= ::Temple::Utils.escape_html((stylesheet_link_tag    "application")) %>
+<%= ::Temple::Utils.escape_html((javascript_include_tag "application")) %>
+<%= ::Temple::Utils.escape_html((csrf_meta_tags)) %>
+</head><body>
+<div class="title-bar" data-hide-for="medium" data-responsive-toggle="example-menu">
+<button class="menu-icon" data-toggle="" type="button">
+</button><div class="title-bar-title">Menu
+</div>
+</div><div class="top-bar" id="dashboard-topbar">
+<div class="top-bar-left">
+<ul class="menu">
+<li>
+<%= ::Temple::Utils.escape_html((link_to "Dashboard For #{ENV['SITE_NAME']}", admin_root_path)) %>
+</li><li>
+<%= ::Temple::Utils.escape_html((link_to t('admin.new_post'), new_admin_post_path)) %>
+</li><li>
+<%= ::Temple::Utils.escape_html((link_to t('admin.posts'), admin_posts_path)) %>
+</li><li>
+<%= ::Temple::Utils.escape_html((link_to t('admin.subscribes'), admin_subscribes_path)) %>
+</li></ul></div><div class="top-bar-right">
+<ul class="menu">
+<li>
+<%= ::Temple::Utils.escape_html((link_to t('admin.back'), root_path)) %>
+</li><% if admin_username
+ %><li>
+<%= ::Temple::Utils.escape_html((link_to admin_username + ' [ ' + t('admin.logout') + ' ]', admin_session_path(1), method: 'DELETE')) %>
+</li><% end %></ul></div></div><% flash.each do |name, msg|
+if msg.is_a?(String)
+ %><div<% _temple_html_attributeremover1 = ''; _slim_codeattributes1 = ("callout #{name.to_sym == :notice ? "success" : "alert"}"); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((::Temple::Utils.escape_html((_slim_codeattributes1.join(" ")))).to_s); else; _temple_html_attributeremover1 << ((::Temple::Utils.escape_html((_slim_codeattributes1))).to_s); end; _temple_html_attributeremover1 %><% if !_temple_html_attributeremover1.empty? %> class="<%= _temple_html_attributeremover1 %>"<% end %> data-closable="">
+<%= ::Temple::Utils.escape_html((content_tag :div, msg)) %>
+<button class="close-button" data-close="" type="button">&times;</button>
+</div><% end; end %><div class="admin-main-field" ng-app="app">
+<%= ::Temple::Utils.escape_html((yield)) %>
+</div><%= ::Temple::Utils.escape_html((render "layouts/footer")) %>
+</body></html>

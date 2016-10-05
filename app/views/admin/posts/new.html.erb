@@ -1,0 +1,6 @@
+<div class="row">
+<div class="small-12 columns">
+<div class="admin-posts-field" ng-controller="AdminPostsController">
+<h3 class="blog-title"><%= ::Temple::Utils.escape_html((t('admin.new_post'))) %></h3>
+<%= ::Temple::Utils.escape_html((render 'form')) %>
+</div></div></div>

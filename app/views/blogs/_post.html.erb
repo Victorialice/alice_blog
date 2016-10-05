@@ -1,0 +1,24 @@
+<%= ::Temple::Utils.escape_html((render partial: 'post_head', locals: { post: post })) %>
+
+<div class="content markdown">
+<%= post.content_html %>
+
+</div><p class="ptag published-at">
+<%= ::Temple::Utils.escape_html((t('announce_at'))) %>
+<span><%= ::Temple::Utils.escape_html((format_date(post.created_at))) %>
+</span>
+</p><%= ::Temple::Utils.escape_html((render 'common/copyright')) %>
+<hr class="blog-over" />
+<p>
+<button<% _temple_html_attributeremover1 = ''; _temple_html_attributemerger1 = []; _temple_html_attributemerger1[0] = "button"; _temple_html_attributemerger1[1] = "like-button"; _temple_html_attributemerger1[2] = (::Temple::Utils.escape_html(('liked' if post.liked_by?(cookies[:like])))).to_s; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1 %><% if !_temple_html_attributeremover1.empty? %> class="<%= _temple_html_attributeremover1 %>"<% end; _slim_codeattributes1 = blog_likes_path(post); if _slim_codeattributes1; if _slim_codeattributes1 == true %> data-url=""<% else %> data-url="<%= ::Temple::Utils.escape_html((_slim_codeattributes1)) %>"<% end; end %> type="button">
+<span class="count"><%= ::Temple::Utils.escape_html((@likes_count)) %></span>
+<span>Like</span>
+</button><div class="qrcode">
+<a href="#" id="qrcode-link">
+<i class="fi-link">
+</i><%= ::Temple::Utils.escape_html((t('qr_code'))) %>
+
+</a></div><div class="social-share">
+<div class="qrcode-wrapper">
+<%= ::Temple::Utils.escape_html((render partial: "qrcode", locals: { str: blog_url(post) })) %>
+</div></div></p>

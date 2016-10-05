@@ -1,0 +1,12 @@
+<p>你评论过的博客有新的回复:</p>
+<p>评论人: <%= ::Temple::Utils.escape_html((@comment.name)) %></p>
+<p>评论内容:</p>
+<pre><%= ::Temple::Utils.escape_html((@comment.content)) %></pre>
+<p>
+被评论博客:
+<%= ::Temple::Utils.escape_html((link_to @comment.post.title, blog_url(@comment.post))) %>
+</p><hr />
+<p>
+退订:
+<%= ::Temple::Utils.escape_html((link_to unsubscribes_url, unsubscribes_url)) %>
+</p>
