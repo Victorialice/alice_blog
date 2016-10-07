@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
+<% if content_for?(:meta)
+ %><%= ::Temple::Utils.escape_html((yield(:meta))) %>
+<% end %><title>
+<%= ::Temple::Utils.escape_html((content_for?(:title) ? yield(:title) + " | #{ENV['SITE_NAME']}" : ENV['SITE_NAME'])) %>
+</title><%= ::Temple::Utils.escape_html((stylesheet_link_tag "application", 'data-turbolinks-track' => "reload")) %>
+<%= ::Temple::Utils.escape_html((favicon_link_tag 'favicon.png', type: 'image/png')) %>
+<%= ::Temple::Utils.escape_html((javascript_include_tag "application", 'data-turbolinks-track' => "reload", 'defer' => true)) %>
+<%= ::Temple::Utils.escape_html((csrf_meta_tags)) %>
+<%= ::Temple::Utils.escape_html((action_cable_meta_tag)) %>
+</head><body data-whatinput="mouse">
+<% if content_for?(:main)
+ %><%= ::Temple::Utils.escape_html((yield(:main))) %>
+<% else
+ %><div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+<div class="off-canvas position-left" data-off-canvas="" id="offCanvas">
+<ul class="vertical menu">
+<li>
+<label>Menu</label>
+</li><li>
+<% _slim_controls1 = link_to root_path do
+ %><i class="fi-home">
+</i><%= ::Temple::Utils.escape_html((t('head.home'))) %>
+<% end %><%= ::Temple::Utils.escape_html((_slim_controls1)) %></li><li>
+<label>Archive</label>
+</li><li>
+<% _slim_controls2 = link_to archives_path do
+ %><i class="fi-align-justify">
+</i><%= ::Temple::Utils.escape_html((t('head.timeline'))) %>
+<% end %><%= ::Temple::Utils.escape_html((_slim_controls2)) %></li><li>
+<label>About</label>
+<% _slim_controls3 = link_to about_path do
+ %><i class="fi-torso">
+</i><%= ::Temple::Utils.escape_html((t('head.about'))) %>
+<% end %><%= ::Temple::Utils.escape_html((_slim_controls3)) %></li></ul></div><div class="off-canvas-content" data-off-canvas-content="">
+<div class="title-bar hide-for-medium my-topbar">
+<div class="title-bar-left">
+<button class="menu-icon" data-open="offCanvas" type="button">
+</button><span class="title-bar-title">
+<%= ::Temple::Utils.escape_html((link_to ENV['SITE_NAME'], root_path)) %>
+</span></div></div><div class="top-bar show-for-medium my-topbar">
+<div class="top-bar-left">
+<ul class="dropdown menu" data-dropdown-menu="">
+<li>
+<%= ::Temple::Utils.escape_html((link_to ENV['SITE_NAME'], root_path, class: 'title')) %>
+</li></ul></div><div class="top-bar-right">
+<ul class="dropdown menu" data-dropdown-menu="">
+<li>
+<%= ::Temple::Utils.escape_html((link_to t('head.home'), root_path)) %>
+</li><li>
+<%= ::Temple::Utils.escape_html((link_to t('head.timeline'), archives_path)) %>
+</li><li>
+<%= ::Temple::Utils.escape_html((link_to t('head.about'), about_path)) %>
+</li></ul></div></div><% flash.each do |name, msg|
+if msg.is_a?(String)
+ %><div<% _temple_html_attributeremover1 = ''; _slim_codeattributes1 = ("callout #{name.to_sym == :notice ? "success" : "alert"}"); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributeremover1 << ((::Temple::Utils.escape_html((_slim_codeattributes1.join(" ")))).to_s); else; _temple_html_attributeremover1 << ((::Temple::Utils.escape_html((_slim_codeattributes1))).to_s); end; _temple_html_attributeremover1 %><% if !_temple_html_attributeremover1.empty? %> class="<%= _temple_html_attributeremover1 %>"<% end %> data-closable="">
+<%= ::Temple::Utils.escape_html((content_tag :div, msg)) %>
+<button class="close-button" data-close="" type="button">&times;</button>
+</div><% end; end %><%= ::Temple::Utils.escape_html((render 'common/welcome_new_year')) %>
+<%= ::Temple::Utils.escape_html((yield)) %>
+<%= ::Temple::Utils.escape_html((render "layouts/footer")) %>
+</div></div></div><% end %></body></html>

@@ -1,0 +1,10 @@
+<div class="comment-diag">
+<% comments.each do |comment|
+ %><div class="comment-wrapper">
+<p class="name">
+<%= ::Temple::Utils.escape_html((comment.name)) %>
+<%= ::Temple::Utils.escape_html(("  • ")) %>
+<span class="created-at">
+<%= ::Temple::Utils.escape_html((format_time(comment.created_at) )) %>
+</span></p><%= ::Temple::Utils.escape_html((render partial: 'comments/comment_pre', locals: { comment: comment })) %>
+</div><% end %></div>

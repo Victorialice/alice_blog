@@ -1,0 +1,17 @@
+<div class="row">
+<div class="small-12 large-9 large-centered columns">
+<% _slim_controls1 = form_for Comment.new, url: blog_comments_path(@post), remote: true do |f|
+ %><div class="row">
+<div class="small-12 large-12 columns">
+<%= ::Temple::Utils.escape_html((f.text_area :content, placeholder: t('comment_placeholder.content'))) %>
+</div></div><div class="row">
+<div class="small-12 large-6 columns">
+<%= ::Temple::Utils.escape_html((f.text_field :name, value: cookies[:name], placeholder: t('comment_placeholder.name'))) %>
+<%= ::Temple::Utils.escape_html((f.text_field :email, value: cookies[:email], placeholder: t('comment_placeholder.email'))) %>
+</div></div><button class="button comment-submit"<% _slim_codeattributes1 = t('comment_placeholder.submitting'); if _slim_codeattributes1; if _slim_codeattributes1 == true %> data-disable-with=""<% else %> data-disable-with="<%= ::Temple::Utils.escape_html((_slim_codeattributes1)) %>"<% end; end %> type="submit"><%= ::Temple::Utils.escape_html((t('comment_placeholder.submit'))) %></button>
+<div class="alert callout" id="alert-container">
+<span class="text">
+</span><button class="close-button" type="button">
+<span>&times;</span>
+</button></div><% end %><%= ::Temple::Utils.escape_html((_slim_controls1)) %><%= ::Temple::Utils.escape_html((render partial: 'comments/comment_content', locals: { comments: comments })) %>
+</div></div>

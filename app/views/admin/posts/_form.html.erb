@@ -1,0 +1,37 @@
+<% url = @post.new_record? ? admin_posts_path : admin_post_path(@post)
+_slim_controls1 = simple_form_for(@post, url: url, html: {novalidate: '' }) do |f|
+ %><div class="row">
+<div class="large-6 columns">
+<%= ::Temple::Utils.escape_html((f.input :title, label: t('admin.posts_attributes.title'), input_html: { name: 'title' })) %>
+</div></div><div class="row">
+<div class="small-12 large-6 columns">
+<%= ::Temple::Utils.escape_html((label_tag :labels, t('admin.posts_attributes.labels'))) %>
+<%= ::Temple::Utils.escape_html((text_field_tag :labels, @post.labels_content(true))) %>
+
+</div></div><div class="row">
+<div class="small-12 columns">
+<p>
+<%= ::Temple::Utils.escape_html((t('admin.posts_attributes.already_labels'))) %>
+<span>
+<% Label.all.each do |label|
+ %><a class="tag" href="#"><%= ::Temple::Utils.escape_html((label.name)) %>
+</a>
+<% end %></span></p></div></div>
+<ul class="tabs" data-tabs="" id="tabs">
+<li class="tabs-title is-active">
+<a href="#content"><%= ::Temple::Utils.escape_html((t('admin.posts_attributes.content'))) %></a>
+</li><li class="tabs-title">
+<a href="#preview"><%= ::Temple::Utils.escape_html((t('admin.posts_attributes.preview'))) %></a>
+</li><%= ::Temple::Utils.escape_html((link_to t('admin.posts_attributes.upload_photo'), "#", :id=>'upload_photo')) %>
+</ul><input style="display: none;" type="file" />
+
+<div class="tabs-content" data-tabs-content="tabs">
+<div class="tabs-panel content-field is-active" id="content">
+<%= ::Temple::Utils.escape_html((f.input :content, :as=> :text, :label => false, input_html: { name: 'content', id: 'content-input' })) %>
+
+</div><div class="tabs-panel preview markdown" id="preview">
+
+</div></div><div class="row">
+<div class="small-12 large-6 columns posts-button">
+<button class="button" type="submit"><%= ::Temple::Utils.escape_html((t('admin.posts_attributes.submit'))) %></button>
+</div></div><% end %><%= ::Temple::Utils.escape_html((_slim_controls1)) %>

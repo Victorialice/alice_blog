@@ -1,0 +1,13 @@
+<p>
+你的博客有新的评论:
+</p><p>
+<span>来自:</span>
+<%= ::Temple::Utils.escape_html((mail_to @comment.email, @comment.name)) %>
+</p><p>评论内容:</p>
+<pre>
+<%= ::Temple::Utils.escape_html((@comment.content)) %>
+
+</pre><p>
+博客链接:
+<%= ::Temple::Utils.escape_html((link_to @comment.post.title, blog_url(@comment.post))) %>
+</p>

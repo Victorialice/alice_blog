@@ -1,0 +1,15 @@
+<div class="row">
+<div class="small-12 columns">
+<div class="footer">
+<div>
+<span class="link"><%= ::Temple::Utils.escape_html((ENV['SITE_ADDRESS'])) %>
+</span><span class="time"><%= ::Temple::Utils.escape_html((ENV['SITE_YEAR'])) %>
+</span></div><div class="license">
+Designed by
+<span>
+<%= ::Temple::Utils.escape_html((link_to 'Alice', 'http://zhuwenqian.com/about', target: '_blank')) %>
+</span></div><div class="license">
+Built with
+<span>
+<%= ::Temple::Utils.escape_html((link_to 'AliceBlog', 'https://github.com/victorialice/AliceBlog', target: '_blank')) %>
+</span></div></div></div></div>

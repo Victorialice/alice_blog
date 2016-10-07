@@ -1,0 +1,29 @@
+<div class="row admin-posts-field">
+<div class="small-12 columns">
+<h3 class="blog-title"><%= ::Temple::Utils.escape_html((t('admin.posts') )) %></h3>
+<table width="100%">
+<thead>
+<tr>
+<th><%= ::Temple::Utils.escape_html((t('admin.posts_head.title'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.posts_head.summary'))) %></th>
+<th><%= ::Temple::Utils.escape_html((t('admin.posts_head.operation'))) %></th>
+</tr></thead><tbody>
+<% @posts.each do |post|
+ %><tr>
+<td>
+<%= ::Temple::Utils.escape_html((link_to post.title, blog_path(post))) %>
+</td><td class="admin-post-summary-field">
+<i class="fi-calendar">
+</i><span><%= ::Temple::Utils.escape_html((format_time(post.created_at))) %></span>
+<i class="fi-pricetag-multiple">
+</i><span><%= ::Temple::Utils.escape_html(( post.labels_content )) %></span>
+<i class="fi-torsos">
+</i><span><%= ::Temple::Utils.escape_html(( post.visited_count )) %></span>
+<i class="fi-heart">
+</i><span><%= ::Temple::Utils.escape_html(( post.liked_count )) %></span>
+</td><td>
+<%= ::Temple::Utils.escape_html((link_to t('comment'), admin_post_comments_path(post.id), class: 'edit-post-link')) %>
+<%= ::Temple::Utils.escape_html((link_to t('edit'), edit_admin_post_path(post), class: 'edit-post-link')) %>
+<%= ::Temple::Utils.escape_html((link_to t('destroy'), admin_post_path(post), method: 'DELETE', 'data-confirm' => '确认删除?')) %>
+</td></tr><% end %></tbody></table><%= paginate @posts %>
+</div></div>

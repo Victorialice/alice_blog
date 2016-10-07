@@ -1,0 +1,42 @@
+<% if ENV['INTRODUCE'].present?
+content_for(:meta) do
+ %><meta content="<%= ::Temple::Utils.escape_html((ENV['INTRODUCE'].dup.force_encoding('UTF-8'))) %>" name="description" />
+<% end; end; content_for(:title) do
+ %><%= ::Temple::Utils.escape_html((t('title.home'))) %>
+<% end %><div class="row">
+<div class="small-12 large-8 columns">
+<% unless @newest
+ %><%= ::Temple::Utils.escape_html((render 'common/no_blog_here')) %>
+<% else
+ %><%= ::Temple::Utils.escape_html((render partial: 'post_head', locals: { post: @newest })) %>
+<div class="content markdown">
+<%= @newest.sub_content %>
+
+<%= ::Temple::Utils.escape_html((link_to t('home.read'), blog_path(@newest), class: 'read-more')) %>
+<p class="published-at"><%= ::Temple::Utils.escape_html((t('home.created_at'))) %> <%= ::Temple::Utils.escape_html((format_date(@newest.created_at))) %>
+</p>
+</div><% if @recent.present?
+ %><h4 class="recent-title"><%= ::Temple::Utils.escape_html((t('home.recent'))) %></h4>
+<ul class="recent-content">
+<% @recent.each do |re|
+ %><li><%= ::Temple::Utils.escape_html((link_to re.title,blog_path(re))) %>
+
+</li><% end %></ul><% end; end %></div><div class="large-3 columns large-offset-1 self-introduce self-introduce-index">
+
+<%= ::Temple::Utils.escape_html((render 'common/welcome')) %>
+<h4><%= ::Temple::Utils.escape_html((t('subscribes.title'))) %></h4>
+<div class="row">
+<div class="small-12 medium-6 large-12 columns">
+<ul class="subscribe-ul">
+<% if ENV['ADMIN_USER'].present? && ENV['ADMIN_USER'].include?('@')
+ %><li>
+<%= ::Temple::Utils.escape_html((link_to t('subscribes.email'), new_subscribe_path)) %>
+</li><% end %><li>
+<a data-toggle="qrcode-home"><%= ::Temple::Utils.escape_html((t('subscribes.wechat') )) %></a>
+<div class="weixin-subscribe hide" data-toggler="hide"<% _slim_codeattributes1 = root_url; if _slim_codeattributes1; if _slim_codeattributes1 == true %> data-url=""<% else %> data-url="<%= ::Temple::Utils.escape_html((_slim_codeattributes1)) %>"<% end; end %> id="qrcode-home">
+</div></li><li>
+<a data-toggle="rss-home"><%= ::Temple::Utils.escape_html((t('subscribes.rss') )) %></a>
+<div class="rss-subscribe hide" data-toggler="hide" id="rss-home">
+<% _slim_controls1 = link_to rss_blogs_path do
+image_tag('rss.png')
+end %><%= ::Temple::Utils.escape_html((_slim_controls1)) %></div></li></ul></div></div></div></div>

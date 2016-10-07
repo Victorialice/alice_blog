@@ -1,0 +1,23 @@
+<% content_for(:meta) do
+ %><meta<% _slim_codeattributes1 = @post.meta_content; if _slim_codeattributes1; if _slim_codeattributes1 == true %> content=""<% else %> content="<%= ::Temple::Utils.escape_html((_slim_codeattributes1)) %>"<% end; end %> name="description" />
+<meta<% _slim_codeattributes2 = @post.labels_content; if _slim_codeattributes2; if _slim_codeattributes2 == true %> content=""<% else %> content="<%= ::Temple::Utils.escape_html((_slim_codeattributes2)) %>"<% end; end %> name="keywords" />
+
+<% end; content_for(:title) do
+ %><%= ::Temple::Utils.escape_html((@post.title)) %>
+<% end %><div class="row blog-wrapper"<% _slim_codeattributes3 = @post.id; if _slim_codeattributes3; if _slim_codeattributes3 == true %> data-post_id=""<% else %> data-post_id="<%= ::Temple::Utils.escape_html((_slim_codeattributes3)) %>"<% end; end; _slim_codeattributes4 = refresh_blog_comments_path(@post); if _slim_codeattributes4; if _slim_codeattributes4 == true %> data-url=""<% else %> data-url="<%= ::Temple::Utils.escape_html((_slim_codeattributes4)) %>"<% end; end %> id="blog-show-page">
+<div class="small-12 large-9 large-centered columns">
+<%= ::Temple::Utils.escape_html((render partial: "post", :locals=> { post: @post })) %>
+</div></div><div class="comment-field">
+<%= ::Temple::Utils.escape_html((render partial: 'comment', locals: { comments: @comments, post: @post })) %>
+<p>
+</p><div class="row">
+<div class="small-12 large-9 large-centered columns">
+<% if @prev
+_slim_controls1 = link_to blog_path(@prev), class: 'prev' do
+ %><i class="fi-arrow-left">
+</i>Prev
+<% end %><%= ::Temple::Utils.escape_html((_slim_controls1)) %><% end; if @next
+_slim_controls2 = link_to blog_path(@next), class: 'next' do
+ %>Next
+<i class="fi-arrow-right">
+</i><% end %><%= ::Temple::Utils.escape_html((_slim_controls2)) %><% end %></div></div></div>
